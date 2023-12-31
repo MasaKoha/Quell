@@ -1,6 +1,6 @@
 {
     "name": "Quell",
-    "rootNamespace": "Quell",
+    "rootNamespace": "",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
