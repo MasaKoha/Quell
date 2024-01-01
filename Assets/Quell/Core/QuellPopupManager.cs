@@ -4,11 +4,10 @@ using UnityEngine;
 
 namespace Quell.Core
 {
-    public class PopupManager : MonoBehaviour
+    public class QuellPopupManager : MonoBehaviour
     {
-        public static PopupManager Instance { get; private set; }
+        public static QuellPopupManager Instance { get; private set; }
         private Transform _quellPopupManagerRoot;
-
         private readonly Stack _popupStack = new();
 
         private void Awake()
@@ -17,7 +16,7 @@ namespace Quell.Core
             DontDestroyOnLoad(this.gameObject);
         }
 
-        public IEnumerator ShowPopup(IPopupContent popup)
+        public IEnumerator ShowPopup(IQuellPopupContent quellPopup)
         {
             yield return null;
         }

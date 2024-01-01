@@ -1,0 +1,16 @@
+{
+    "name": "Quell.Sample",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1d4451dc0e1953642a2372996b0d433e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
