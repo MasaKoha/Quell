@@ -1,24 +1,26 @@
 ﻿using System.Collections;
 using Quell.Core.Interface;
+using UnityEngine;
 
 namespace Quell.Sample
 {
-    public class SampleQuellPopupContent : IQuellPopupContent
+    public class SampleQuellPopupContent : MonoBehaviour, IQuellPopupContent
     {
-        public void Initialize<TOpenParameter, TCloseParameter>(IQuellPopupContentParameter<TOpenParameter, TCloseParameter> quellPopupContentParameter)
-            where TOpenParameter : IQuellPopupOpenParameter where TCloseParameter : IQuellPopupCloseParameter
+        public GameObject PopupGameObject => this.gameObject;
+        public IQuellPopupContent Content => this;
+
+        public void Initialize(IQuellPopupOpenParameter openParameter, IQuellPopupCloseParameter closeParameter)
         {
-            throw new System.NotImplementedException();
         }
 
         public IEnumerator ShowAsync()
         {
-            throw new System.NotImplementedException();
+            yield break;
         }
 
         public IEnumerator HideAsync()
         {
-            throw new System.NotImplementedException();
+            yield break;
         }
     }
 }

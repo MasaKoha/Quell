@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using Quell.Core.Interface;
+using UnityEngine;
 
 namespace Quell.Sample.Popup
 {
-    public class SampleQuellQuellPopupContent : IQuellPopupContent
+    public class SampleQuellQuellPopupContent : MonoBehaviour, IQuellPopupContent
     {
-        public void Initialize<TOpen, TClose>(IQuellPopupContentParameter<TOpen, TClose> quellPopupContentParameter)
-            where TOpen : IQuellPopupOpenParameter where TClose : IQuellPopupCloseParameter
+        public GameObject PopupGameObject => this.gameObject;
+
+        public void Initialize(IQuellPopupOpenParameter openParameter, IQuellPopupCloseParameter closeParameter)
         {
         }
 

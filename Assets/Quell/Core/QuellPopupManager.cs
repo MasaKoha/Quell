@@ -1,4 +1,6 @@
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using Quell.Core.Interface;
 using UnityEngine;
 
@@ -7,8 +9,8 @@ namespace Quell.Core
     public class QuellPopupManager : MonoBehaviour
     {
         public static QuellPopupManager Instance { get; private set; }
-        private Transform _quellPopupManagerRoot;
-        private readonly Stack _popupStack = new();
+        private readonly Stack<IQuellPopupContent> _popupStack = new();
+        private readonly Queue<IQuellPopupContent> _stack = new();
 
         private void Awake()
         {
@@ -16,9 +18,19 @@ namespace Quell.Core
             DontDestroyOnLoad(this.gameObject);
         }
 
-        public IEnumerator ShowPopup(IQuellPopupContent quellPopup)
+        public IEnumerator ShowPopupAsync(IQuellPopupContent quellPopup, IQuellPopupOpenParameter openParameter, IQuellPopupCloseParameter closeParameter)
         {
-            yield return null;
+            var instance = Instantiate(quellPopup.PopupGameObject, this.transform);
+            var content = instance.GetComponent<IQuellPopupContent>();
+            content.Initialize(openParameter, closeParameter);
+            _popupStack.Push(content);
+            yield return content.ShowAsync();
+        }
+
+        public IEnumerator HidePopupAsync()
+        {
+            var targetHidePopup = _popupStack.Pop();
+            yield return targetHidePopup.HideAsync();
         }
     }
 }

@@ -1,12 +1,12 @@
 ﻿using System.Collections;
+using UnityEngine;
 
 namespace Quell.Core.Interface
 {
     public interface IQuellPopupContent
     {
-        void Initialize<TOpenParameter, TCloseParameter>(IQuellPopupContentParameter<TOpenParameter, TCloseParameter> parameter)
-            where TOpenParameter : IQuellPopupOpenParameter where TCloseParameter : IQuellPopupCloseParameter;
-
+        GameObject PopupGameObject { get; }
+        void Initialize(IQuellPopupOpenParameter openParameter, IQuellPopupCloseParameter closeParameter);
         IEnumerator ShowAsync();
         IEnumerator HideAsync();
     }
